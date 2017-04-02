@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"gulp-iconfont",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "gulp-iconfont",
+    "description": "api documentation for [gulp-iconfont (v8.0.1)](https://github.com/nfroidure/gulp-iconfont) [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-iconfont.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-iconfont) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont)",
     "devDependencies": {
-        "gulp-iconfont": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "gulp-iconfont": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-gulp-iconfont",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-gulp-iconfont",
+    "keywords": [
+        "documentation",
+        "gulp-iconfont"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_gulp_iconfont.js",
+    "name": "npmdoc-gulp-iconfont",
+    "nameAlias": "npmdoc_gulp_iconfont",
+    "nameOriginal": "npmdoc-gulp-iconfont",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-gulp-iconfont.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
