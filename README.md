@@ -3,9 +3,11 @@
 
 [![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true)](https://www.npmjs.com/package/gulp-iconfont)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-gulp-iconfont_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screenCapture.buildNpmdoc.browser.%2Fhome%2Ftravis%2Fbuild%2Fnpmdoc%2Fnode-npmdoc-gulp-iconfont%2Ftmp%2Fbuild%2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
