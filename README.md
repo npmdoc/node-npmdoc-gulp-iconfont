@@ -1,9 +1,14 @@
-# api documentation for  [gulp-iconfont (v8.0.1)](https://github.com/nfroidure/gulp-iconfont)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-iconfont.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-iconfont) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont)
+# npmdoc-gulp-iconfont
+
+#### api documentation for  [gulp-iconfont (v8.0.1)](https://github.com/nfroidure/gulp-iconfont)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-iconfont.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-iconfont) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont)
+
 #### Create icon fonts from several SVG icons
 
-[![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true)](https://www.npmjs.com/package/gulp-iconfont)
+[![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-iconfont)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-gulp-iconfont%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-gulp-iconfont/build/screenCapture.npmPackageListing.svg)
 
@@ -67,13 +72,11 @@
     "main": "src/index.js",
     "maintainers": [
         {
-            "name": "nfroidure",
-            "email": "nfroidure@elitwork.com"
+            "name": "nfroidure"
         }
     ],
     "name": "gulp-iconfont",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/nfroidure/gulp-iconfont.git"
@@ -90,16 +93,6 @@
     "version": "8.0.1"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module gulp-iconfont](#apidoc.module.gulp-iconfont)
-
-
-
-# <a name="apidoc.module.gulp-iconfont"></a>[module gulp-iconfont](#apidoc.module.gulp-iconfont)
 
 
 
