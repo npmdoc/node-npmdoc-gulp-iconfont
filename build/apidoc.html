@@ -61,12 +61,125 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-iconfont">module gulp-iconfont</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-iconfont.gulp-iconfont">
+            function <span class="apidocSignatureSpan"></span>gulp-iconfont
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.gulp-iconfont" id="apidoc.module.gulp-iconfont">module gulp-iconfont</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-iconfont.gulp-iconfont" id="apidoc.element.gulp-iconfont.gulp-iconfont">
+        function <span class="apidocSignatureSpan"></span>gulp-iconfont
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function gulpFontIcon(options) {
+  var inStream = null;
+  var outStream = null;
+  var duplexStream = null;
+
+  options = options || {};
+  options.formats = options.formats || [&#x27;ttf&#x27;, &#x27;eot&#x27;, &#x27;woff&#x27;];
+  // Generating SVG font and saving her
+  inStream = svgicons2svgfont(options);
+  // Generating TTF font and saving her
+  outStream = inStream
+    .pipe(svg2ttf({
+      clone: -1 !== options.formats.indexOf(&#x27;svg&#x27;),
+      timestamp: options.timestamp,
+    }).on(&#x27;error&#x27;, function(err) {
+      outStream.emit(&#x27;error&#x27;, err);
+    }))
+  // TTFAutoHint
+    .pipe(cond(!!options.autohint, function() {
+      var hintPath = typeof options.autohint === &#x27;string&#x27; ? options.autohint : &#x27;ttfautohint&#x27;;
+      var nonTTFfilter = filter(function(file, unused, cb) {
+        cb(file.path.indexOf(&#x27;.ttf&#x27;) !== file.path.length - 4);
+      }, {
+        objectMode: true,
+        restore: true,
+        passthrough: true,
+      });
+
+      return duplexer(
+        { objectMode: true },
+        nonTTFfilter,
+        nonTTFfilter.pipe(spawn({
+          cmd: &#x27;/bin/sh&#x27;,
+          args: [
+            &#x27;-c&#x27;,
+            &#x27;cat | &#x22;&#x27;+hintPath+&#x27;&#x22; --symbol --fallback-script=latn&#x27; +
+              &#x27; --windows-compatibility --no-info /dev/stdin /dev/stdout | cat&#x27;,
+          ],
+        })).pipe(nonTTFfilter.restore)
+      ).on(&#x27;error&#x27;, function(err) {
+        outStream.emit(&#x27;error&#x27;, err);
+      });
+    }))
+  // Generating EOT font
+    .pipe(cond(
+      -1 !== options.formats.indexOf(&#x27;eot&#x27;),
+      function() {
+        return ttf2eot({ clone: true }).on(&#x27;error&#x27;, function(err) {
+          outStream.emit(&#x27;error&#x27;, err);
+        });
+      }
+    ))
+  // Generating WOFF font
+    .pipe(cond(
+      -1 !== options.formats.indexOf(&#x27;woff&#x27;),
+      function() {
+        return ttf2woff({ clone: true }).on(&#x27;error&#x27;, function(err) {
+          outStream.emit(&#x27;error&#x27;, err);
+        });
+      }
+    ))
+  // Generating WOFF2 font
+    .pipe(cond(
+      -1 !== options.formats.indexOf(&#x27;woff2&#x27;),
+      function() {
+        return ttf2woff2({ clone: true }).on(&#x27;error&#x27;, function(err) {
+          outStream.emit(&#x27;error&#x27;, err);
+        });
+      }
+    ))
+  // Filter TTF font if necessary
+    .pipe(cond(
+      -1 === options.formats.indexOf(&#x27;ttf&#x27;),
+      function() {
+        return filter(function(file, unused, cb) {
+          cb(file.path.indexOf(&#x27;.ttf&#x27;) === file.path.length - 4);
+        }, {
+          objectMode: true,
+          passthrough: true,
+        });
+      }
+    ));
+
+  duplexStream = duplexer({ objectMode: true }, inStream, outStream);
+
+  // Re-emit codepoint mapping event
+  inStream.on(&#x27;glyphs&#x27;, function(glyphs) {
+    duplexStream.emit(&#x27;glyphs&#x27;, glyphs, options);
+  });
+
+  return duplexStream;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 

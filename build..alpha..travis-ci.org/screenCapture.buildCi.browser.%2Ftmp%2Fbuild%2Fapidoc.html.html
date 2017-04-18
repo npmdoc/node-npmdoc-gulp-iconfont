@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/nfroidure/gulp-iconfont"
-
-    >gulp-iconfont (v8.0.1)</a>
+    <a href="https://github.com/nfroidure/gulp-iconfont">gulp-iconfont (v8.0.1)</a>
 </h1>
 <h4>Create icon fonts from several SVG icons</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-iconfont">module gulp-iconfont</a><ol>
 
@@ -91,22 +84,22 @@
   var duplexStream = null;
 
   options = options || {};
-  options.formats = options.formats || [&#x27;ttf&#x27;, &#x27;eot&#x27;, &#x27;woff&#x27;];
+  options.formats = options.formats || ['ttf', 'eot', 'woff'];
   // Generating SVG font and saving her
   inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
   outStream = inStream
     .pipe(svg2ttf({
-      clone: -1 !== options.formats.indexOf(&#x27;svg&#x27;),
+      clone: -1 !== options.formats.indexOf('svg'),
       timestamp: options.timestamp,
-    }).on(&#x27;error&#x27;, function(err) {
-      outStream.emit(&#x27;error&#x27;, err);
+    }).on('error', function(err) {
+      outStream.emit('error', err);
     }))
   // TTFAutoHint
     .pipe(cond(!!options.autohint, function() {
-      var hintPath = typeof options.autohint === &#x27;string&#x27; ? options.autohint : &#x27;ttfautohint&#x27;;
+      var hintPath = typeof options.autohint === 'string' ? options.autohint : 'ttfautohint';
       var nonTTFfilter = filter(function(file, unused, cb) {
-        cb(file.path.indexOf(&#x27;.ttf&#x27;) !== file.path.length - 4);
+        cb(file.path.indexOf('.ttf') !== file.path.length - 4);
       }, {
         objectMode: true,
         restore: true,
@@ -117,50 +110,50 @@
         { objectMode: true },
         nonTTFfilter,
         nonTTFfilter.pipe(spawn({
-          cmd: &#x27;/bin/sh&#x27;,
+          cmd: '/bin/sh',
           args: [
-            &#x27;-c&#x27;,
-            &#x27;cat | &#x22;&#x27;+hintPath+&#x27;&#x22; --symbol --fallback-script=latn&#x27; +
-              &#x27; --windows-compatibility --no-info /dev/stdin /dev/stdout | cat&#x27;,
+            '-c',
+            'cat | "'+hintPath+'" --symbol --fallback-script=latn' +
+              ' --windows-compatibility --no-info /dev/stdin /dev/stdout | cat',
           ],
         })).pipe(nonTTFfilter.restore)
-      ).on(&#x27;error&#x27;, function(err) {
-        outStream.emit(&#x27;error&#x27;, err);
+      ).on('error', function(err) {
+        outStream.emit('error', err);
       });
     }))
   // Generating EOT font
     .pipe(cond(
-      -1 !== options.formats.indexOf(&#x27;eot&#x27;),
+      -1 !== options.formats.indexOf('eot'),
       function() {
-        return ttf2eot({ clone: true }).on(&#x27;error&#x27;, function(err) {
-          outStream.emit(&#x27;error&#x27;, err);
+        return ttf2eot({ clone: true }).on('error', function(err) {
+          outStream.emit('error', err);
         });
       }
     ))
   // Generating WOFF font
     .pipe(cond(
-      -1 !== options.formats.indexOf(&#x27;woff&#x27;),
+      -1 !== options.formats.indexOf('woff'),
       function() {
-        return ttf2woff({ clone: true }).on(&#x27;error&#x27;, function(err) {
-          outStream.emit(&#x27;error&#x27;, err);
+        return ttf2woff({ clone: true }).on('error', function(err) {
+          outStream.emit('error', err);
         });
       }
     ))
   // Generating WOFF2 font
     .pipe(cond(
-      -1 !== options.formats.indexOf(&#x27;woff2&#x27;),
+      -1 !== options.formats.indexOf('woff2'),
       function() {
-        return ttf2woff2({ clone: true }).on(&#x27;error&#x27;, function(err) {
-          outStream.emit(&#x27;error&#x27;, err);
+        return ttf2woff2({ clone: true }).on('error', function(err) {
+          outStream.emit('error', err);
         });
       }
     ))
   // Filter TTF font if necessary
     .pipe(cond(
-      -1 === options.formats.indexOf(&#x27;ttf&#x27;),
+      -1 === options.formats.indexOf('ttf'),
       function() {
         return filter(function(file, unused, cb) {
-          cb(file.path.indexOf(&#x27;.ttf&#x27;) === file.path.length - 4);
+          cb(file.path.indexOf('.ttf') === file.path.length - 4);
         }, {
           objectMode: true,
           passthrough: true,
@@ -171,8 +164,8 @@
   duplexStream = duplexer({ objectMode: true }, inStream, outStream);
 
   // Re-emit codepoint mapping event
-  inStream.on(&#x27;glyphs&#x27;, function(glyphs) {
-    duplexStream.emit(&#x27;glyphs&#x27;, glyphs, options);
+  inStream.on('glyphs', function(glyphs) {
+    duplexStream.emit('glyphs', glyphs, options);
   });
 
   return duplexStream;
@@ -189,3 +182,4 @@
     ]
 </div>
 </div>
+</body></html>
