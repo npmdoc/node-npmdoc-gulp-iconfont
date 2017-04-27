@@ -1,6 +1,6 @@
 # npmdoc-gulp-iconfont
 
-#### api documentation for  [gulp-iconfont (v8.0.1)](https://github.com/nfroidure/gulp-iconfont)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-iconfont.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-iconfont) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont)
+#### basic api documentation for  [gulp-iconfont (v8.0.1)](https://github.com/nfroidure/gulp-iconfont)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-iconfont.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-iconfont) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-iconfont)
 
 #### Create icon fonts from several SVG icons
 
@@ -90,7 +90,8 @@
         "preversion": "npm run lint && npm test",
         "test": "mocha tests/*.mocha.js"
     },
-    "version": "8.0.1"
+    "version": "8.0.1",
+    "bin": {}
 }
 ```
 
